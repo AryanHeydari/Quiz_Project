@@ -2,6 +2,7 @@ package com.example.aryanheydari.quiz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.app.Activity;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -13,10 +14,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class Q1 extends AppCompatActivity
+
+
+public class Q1 extends SuperClass
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,44 @@ public class Q1 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        final RadioButton AQ1 = (RadioButton) findViewById(R.id.AQ1);
+        final RadioButton BQ1 = (RadioButton) findViewById(R.id.BQ1);
+        final RadioButton CQ1 = (RadioButton) findViewById(R.id.CQ1);
+        final RadioButton DQ1 = (RadioButton) findViewById(R.id.DQ1);
+
+        final TextView ScoreCount = (TextView)findViewById(R.id.Score);
+
+        ScoreCount.setText("Score: " + SuperClass.getScore());
+
+        RadioGroup Q1RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+
+        Q1RadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            public void onCheckedChanged(RadioGroup Q1RadioGroup, int checkedId) {
+
+
+                if(CQ1.isChecked())
+                {
+                    SuperClass.score++;
+                    for (int i = 0; i < Q1RadioGroup.getChildCount(); i++)
+                    {
+                        Q1RadioGroup.getChildAt(i).setEnabled(false);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < Q1RadioGroup.getChildCount(); i++)
+                    {
+                        Q1RadioGroup.getChildAt(i).setEnabled(false);
+                    }
+                }
+
+                ScoreCount.setText("Score: " + SuperClass.getScore());
+
+            }
+        });
     }
 
 
@@ -52,12 +97,13 @@ public class Q1 extends AppCompatActivity
 
 
 
-    public void CheatQ1 (View view) {
+    public void CheatQ1 (View view){
 
         TextView AnswerQ1 = (TextView) findViewById(R.id.AnswerQ1);
         AnswerQ1.setText("The correct answer is: 1826");
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -93,23 +139,30 @@ public class Q1 extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
 
-        if (id == R.id.List_Q1) {
+        if (id == R.id.List_Q1)
+        {
             Intent Q1 = new Intent(this, Q1.class);
             startActivity(Q1);
 
-        } else if (id == R.id.List_Q2) {
+        }
+        else if (id == R.id.List_Q2)
+        {
             Intent Q2 = new Intent(this, Q2.class);
             startActivity(Q2);
 
-        } else if (id == R.id.List_Q3) {
+        }
+        else if (id == R.id.List_Q3)
+        {
             Intent Q3 = new Intent(this, Q3.class);
             startActivity(Q3);
 
-        } else if (id == R.id.List_Q4) {
+        }
+        else if (id == R.id.List_Q4)
+        {
             Intent Q4 = new Intent(this, Q4.class);
             startActivity(Q4);
 
@@ -120,5 +173,3 @@ public class Q1 extends AppCompatActivity
         return true;
     }
 }
-
-// comment 2

@@ -13,9 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class Q4 extends AppCompatActivity
+public class Q4 extends SuperClass
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -33,6 +35,39 @@ public class Q4 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        final TextView ScoreCount = (TextView)findViewById(R.id.Score);
+
+        ScoreCount.setText("Score: " + SuperClass.getScore());
+
+        RadioGroup Q4RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+        final RadioButton CQ4 = (RadioButton) findViewById(R.id.CQ4);
+
+        Q4RadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            public void onCheckedChanged(RadioGroup Q4RadioGroup, int checkedId) {
+
+                if(CQ4.isChecked())
+                {
+                    SuperClass.score++;
+                    for (int i = 0; i < Q4RadioGroup.getChildCount(); i++)
+                    {
+                        Q4RadioGroup.getChildAt(i).setEnabled(false);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < Q4RadioGroup.getChildCount(); i++)
+                    {
+                        Q4RadioGroup.getChildAt(i).setEnabled(false);
+                    }
+                }
+
+                ScoreCount.setText("Score: " + SuperClass.getScore());
+
+            }
+        });
     }
 
     public void NextQ4 (View view){
@@ -92,23 +127,31 @@ public class Q4 extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.List_Q1) {
+        if (id == R.id.List_Q1)
+        {
             Intent Q1 = new Intent(this, Q1.class);
             startActivity(Q1);
 
-        } else if (id == R.id.List_Q2) {
+        }
+        else if (id == R.id.List_Q2)
+        {
             Intent Q2 = new Intent(this, Q2.class);
             startActivity(Q2);
 
-        } else if (id == R.id.List_Q3) {
+        }
+        else if (id == R.id.List_Q3)
+        {
             Intent Q3 = new Intent(this, Q3.class);
             startActivity(Q3);
 
-        } else if (id == R.id.List_Q4) {
+        }
+        else if (id == R.id.List_Q4)
+        {
             Intent Q4 = new Intent(this, Q4.class);
             startActivity(Q4);
 

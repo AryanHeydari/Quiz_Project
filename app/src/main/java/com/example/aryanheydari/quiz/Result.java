@@ -13,8 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class Result extends AppCompatActivity
+public class Result extends SuperClass
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -32,13 +33,16 @@ public class Result extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
 
+        TextView ScoreDisplay = (TextView) findViewById(R.id.ScoreDisplay);
+        ScoreDisplay.setText("" + SuperClass.getScore());
+    }
 
     public void StartAgain (View view){
 
-        Intent QuestionList = new Intent(this, QuestionList.class);
-        startActivity(QuestionList);
+        Intent Q1 = new Intent(this, Q1.class);
+        startActivity(Q1);
+        SuperClass.score = 0;
 
     }
 

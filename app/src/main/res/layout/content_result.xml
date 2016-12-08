@@ -33,12 +33,12 @@
         android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textAlignment="center"
-        android:textSize="18sp"
+        android:id="@+id/ScoreDisplay"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp" />
+        android:layout_marginTop="55dp"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <Button
         android:text="Start Again"

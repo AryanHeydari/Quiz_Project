@@ -16,7 +16,7 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class QuestionList extends AppCompatActivity
+public class QuestionList extends SuperClass
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -27,7 +27,7 @@ public class QuestionList extends AppCompatActivity
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
